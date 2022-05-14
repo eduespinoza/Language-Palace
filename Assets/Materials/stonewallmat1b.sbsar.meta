@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 1d21f39088e602743807efba8476336c
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: abcc64280192c4a44b27e65523b6bec7, type: 2}
+  _assetPath: Assets/Materials/stonewallmat1b.sbsar
