@@ -10,7 +10,7 @@ public class ActionController : MonoBehaviour
     [SerializeField] UnityEvent OnPointerUp;
 
     [SerializeField] Gradient gradient;
-    [SerializeField] float duration = 3f;
+    [SerializeField] float duration = 2.5f;
 
     ParticleSystem ps;
     ParticleSystem.MainModule main;
@@ -37,13 +37,13 @@ public class ActionController : MonoBehaviour
         }
 
         if (state == 3) {
-            t2 += Time.deltaTime;
-            if (t2 >= duration) {
+            // t2 += Time.deltaTime;
+            // if (t2 >= duration) {
                 ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
                 t1 = 0;
                 t2 = 0;
                 state = 0;
-            }
+            // }
         }
     }
 
@@ -53,7 +53,6 @@ public class ActionController : MonoBehaviour
             print("Pointer enter");
             OnPointerEnter.Invoke();
             ps.Play();
-
             t2 = 0;
             state = 1;
         }
@@ -71,9 +70,11 @@ public class ActionController : MonoBehaviour
         if (state == 1) { // Wait for a few seconds before clear the timer
             ps.Pause();
             state = 3;
+            print("im here if");
         } else {
             ps.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             state = 0;
+            print("im here ELSE");
         }
     }
 }

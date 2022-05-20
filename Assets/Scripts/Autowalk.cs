@@ -12,7 +12,10 @@ using System.Collections;
 
 public class Autowalk : MonoBehaviour 
 {
-	private const int RIGHT_ANGLE = 90; 
+	private const int RIGHT_ANGLE = 90;
+
+	new Rigidbody rigidbody;
+    new Camera camera; 
 	
 	// This variable determinates if the player will move or not 
 	private bool isWalking = false;
@@ -47,59 +50,70 @@ public class Autowalk : MonoBehaviour
 	void Start () 
 	{
 		// head = Camera.main.GetComponent<StereoController>().Head;
-        head = cameraTransform.GetComponent<Camera>();
+        // head = cameraTransform.GetComponent<Camera>();
+		camera = GetComponentInChildren<Camera>();
+        rigidbody = GetComponent<Rigidbody>();
 	}
 	
 	void Update () 
 	{
-		// Walk when the Cardboard Trigger is used 
-		if (walkWhenTriggered && !walkWhenLookDown && !isWalking) 
-		{
-			isWalking = true;
-		} 
-		else if (walkWhenTriggered && !walkWhenLookDown && isWalking) 
-		{
-			isWalking = false;
-		}
-		
-		// Walk when player looks below the threshold angle 
-		if (walkWhenLookDown && !walkWhenTriggered && !isWalking &&  
-		    head.transform.eulerAngles.x >= thresholdAngle && 
-		    head.transform.eulerAngles.x <= RIGHT_ANGLE) 
-		{
-			isWalking = true;
-		} 
-		else if (walkWhenLookDown && !walkWhenTriggered && isWalking && 
-		         (head.transform.eulerAngles.x <= thresholdAngle ||
-		         head.transform.eulerAngles.x >= RIGHT_ANGLE)) 
-		{
-			isWalking = false;
-		}
-		
-		// Walk when the Cardboard trigger is used and the player looks down below the threshold angle
-		if (walkWhenLookDown && walkWhenTriggered && !isWalking &&  
-		    head.transform.eulerAngles.x >= thresholdAngle && 
-		    head.transform.eulerAngles.x <= RIGHT_ANGLE) 
-		{
-			isWalking = true;
-		} 
-		else if (walkWhenLookDown && walkWhenTriggered && isWalking && 
-		         head.transform.eulerAngles.x >= thresholdAngle &&
-		         head.transform.eulerAngles.x >= RIGHT_ANGLE)
-		{
-			isWalking = false;
-		}
-		
-		if (isWalking) 
-		{
-			Vector3 direction = new Vector3(head.transform.forward.x, 0, head.transform.forward.z).normalized * speed * Time.deltaTime;
+
+		if (Input.GetKey ("w")) {
+			
+			Vector3 direction = new Vector3(camera.transform.forward.x, 0, camera.transform.forward.z).normalized * speed * Time.deltaTime;
 			Quaternion rotation = Quaternion.Euler(new Vector3(0, -transform.rotation.eulerAngles.y, 0));
 			transform.Translate(rotation * direction);
 		}
+
+
+		// // Walk when the Cardboard Trigger is used 
+		// if (walkWhenTriggered && !walkWhenLookDown && !isWalking) 
+		// {
+		// 	isWalking = true;
+		// } 
+		// else if (walkWhenTriggered && !walkWhenLookDown && isWalking) 
+		// {
+		// 	isWalking = false;
+		// }
 		
-		if(freezeYPosition)
-		{
-			transform.position = new Vector3(transform.position.x, yOffset, transform.position.z);
-		}
+		// // Walk when player looks below the threshold angle 
+		// if (walkWhenLookDown && !walkWhenTriggered && !isWalking &&  
+		//     head.transform.eulerAngles.x >= thresholdAngle && 
+		//     head.transform.eulerAngles.x <= RIGHT_ANGLE) 
+		// {
+		// 	isWalking = true;
+		// } 
+		// else if (walkWhenLookDown && !walkWhenTriggered && isWalking && 
+		//          (head.transform.eulerAngles.x <= thresholdAngle ||
+		//          head.transform.eulerAngles.x >= RIGHT_ANGLE)) 
+		// {
+		// 	isWalking = false;
+		// }
+		
+		// // Walk when the Cardboard trigger is used and the player looks down below the threshold angle
+		// if (walkWhenLookDown && walkWhenTriggered && !isWalking &&  
+		//     head.transform.eulerAngles.x >= thresholdAngle && 
+		//     head.transform.eulerAngles.x <= RIGHT_ANGLE) 
+		// {
+		// 	isWalking = true;
+		// } 
+		// else if (walkWhenLookDown && walkWhenTriggered && isWalking && 
+		//          head.transform.eulerAngles.x >= thresholdAngle &&
+		//          head.transform.eulerAngles.x >= RIGHT_ANGLE)
+		// {
+		// 	isWalking = false;
+		// }
+		
+		// if (isWalking) 
+		// {
+		// 	Vector3 direction = new Vector3(head.transform.forward.x, 0, head.transform.forward.z).normalized * speed * Time.deltaTime;
+		// 	Quaternion rotation = Quaternion.Euler(new Vector3(0, -transform.rotation.eulerAngles.y, 0));
+		// 	transform.Translate(rotation * direction);
+		// }
+		
+		// if(freezeYPosition)
+		// {
+		// 	transform.position = new Vector3(transform.position.x, yOffset, transform.position.z);
+		// }
 	}
 }

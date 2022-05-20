@@ -35,7 +35,7 @@ public class CameraPointer : MonoBehaviour
     }
 
     private const float maxDistance = 10;
-    ActionController action = null;
+    ShowWord action = null;
     // private GameObject _gazedAtObject = null;
 
 
@@ -48,6 +48,38 @@ public class CameraPointer : MonoBehaviour
     /// <summary>
     /// Update is called once per frame.
     /// </summary>
+    // public void Update()
+    // {
+    //     // Casts ray towards camera's forward direction, to detect if a GameObject is being gazed
+    //     // at.
+    //     if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, maxDistance))
+    //     {
+    //         // GameObject detected in front of the camera.
+    //         ActionController action = hit.transform.GetComponent<ActionController>();
+    //         if (action != null && action != this.action) {
+    //                 this.action?.PointerExit();
+    //                 this.action = action;
+    //                 action.PointerEnter();
+    //             }
+
+    //             if (action == null) {
+    //                 this.action?.PointerExit();
+    //                 this.action = null;
+    //             }
+    //     }
+    //     else
+    //     {
+    //         // No GameObject detected in front of the camera.
+    //         action?.PointerExit();
+    //         action = null;
+    //     }
+
+    //     // Checks for screen touches.
+    //     if (Google.XR.Cardboard.Api.IsTriggerPressed)
+    //     {
+    //         action.PointerDown();
+    //     }
+    // }
     public void Update()
     {
         // Casts ray towards camera's forward direction, to detect if a GameObject is being gazed
@@ -55,7 +87,7 @@ public class CameraPointer : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, maxDistance))
         {
             // GameObject detected in front of the camera.
-            ActionController action = hit.transform.GetComponent<ActionController>();
+            ShowWord action = hit.transform.GetComponent<ShowWord>();
             if (action != null && action != this.action) {
                     this.action?.PointerExit();
                     this.action = action;
@@ -66,28 +98,18 @@ public class CameraPointer : MonoBehaviour
                     this.action?.PointerExit();
                     this.action = null;
                 }
-            // if (_gazedAtObject != hit.transform.gameObject)
-            // {
-            //     // New GameObject.
-            //     _gazedAtObject?.SendMessage("OnPointerExit");
-            //     _gazedAtObject = hit.transform.gameObject;
-            //     _gazedAtObject.SendMessage("OnPointerEnter");
-            // }
         }
         else
         {
             // No GameObject detected in front of the camera.
             action?.PointerExit();
             action = null;
-            // _gazedAtObject?.SendMessage("OnPointerExit");
-            // _gazedAtObject = null;
         }
 
         // Checks for screen touches.
         if (Google.XR.Cardboard.Api.IsTriggerPressed)
         {
             action.PointerDown();
-            // _gazedAtObject?.SendMessage("OnPointerClick");
         }
     }
 }
