@@ -1,5 +1,6 @@
 # Language-Palace
-VR Android Game for learning languages 
+VR Android Game for learning languages
+Unity Editor Version Used : 2021.3.1f1
 
 # Pics
 ![image](https://user-images.githubusercontent.com/38284394/169691531-7b5fb66a-54d1-473c-bfd6-871b91d41d62.png)
