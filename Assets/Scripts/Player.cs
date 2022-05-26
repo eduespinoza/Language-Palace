@@ -10,6 +10,7 @@ public class Player
     public static string name = "Default";
     public static string language1 = "";
     public static string language2 = "";
+    public static string topic = "";
 
     public Player(){}
 

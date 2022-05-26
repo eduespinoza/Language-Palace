@@ -96,7 +96,7 @@ public class MainMenu : MonoBehaviour
     private void addLanguageToContent(string nameObj){
         var copy = Instantiate(itemTemplate);
         copy.gameObject.name = nameObj;
-        copy.GetComponent<TMPro.TextMeshProUGUI>().text = nameObj;
+        copy.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = nameObj;
         copy.GetComponent<Button>().onClick.AddListener ( delegate {OptionSelected();} );
         copy.transform.SetParent(contentView.transform, false);
     }
@@ -112,6 +112,10 @@ public class MainMenu : MonoBehaviour
 
     public void LanguageSelected(bool value){
         lang1Selected = value;
+    }
+
+    public void TopicSelection(string value){
+        Player.topic = value;
     }
 
 

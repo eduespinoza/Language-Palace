@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HelloCardboard.unity
     guid: 145a2a45d7bc746b19cb68410368bf96
+  - enabled: 1
+    path: Assets/Scenes/Test.unity
+    guid: 45861304619c5024abb0a3424dbbca79
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 26af791532af84841bf1931162b436d0, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: b41caa8ae9fc59f44bcad8b461f3113b, type: 2}
