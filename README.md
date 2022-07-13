@@ -2,9 +2,10 @@
 VR Android Game for learning languages
 Unity Editor Version Used : 2021.3.1f1
 
-# Pics
-![image](https://user-images.githubusercontent.com/38284394/169691531-7b5fb66a-54d1-473c-bfd6-871b91d41d62.png)
-![image](https://user-images.githubusercontent.com/38284394/169691545-aefba605-65a5-4ea5-b9fd-b2fdfa159c06.png)
-![image](https://user-images.githubusercontent.com/38284394/169691552-17ccf2f5-80e7-4243-8116-3df0132b0d36.png)
-![image](https://user-images.githubusercontent.com/38284394/169691557-effd1f6e-7dea-4fd3-8757-69905a76521b.png)
+# In-Game pics (july 2022)
+![image](https://user-images.githubusercontent.com/38284394/178810527-79df6137-f016-4404-8a42-79efdb6f934e.png)
+![image](https://user-images.githubusercontent.com/38284394/178810571-09f5142c-9c1a-4da3-a241-d0dcbfdef1cc.png)
+
+
+
 
