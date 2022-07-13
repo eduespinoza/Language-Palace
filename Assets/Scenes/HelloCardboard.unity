@@ -2890,8 +2890,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionAnimation: {fileID: 5073269627243219452, guid: 79f2bcb61b2c5ed44bffc2c73c73aaa9, type: 3}
   canvas: {fileID: 7668110858049832626, guid: eced0dccccce4f44da3f4db035e4bd58, type: 3}
-  word1: 
-  word2: 
 --- !u!65 &1530525199
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3679,8 +3677,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionAnimation: {fileID: 5073269627243219452, guid: 79f2bcb61b2c5ed44bffc2c73c73aaa9, type: 3}
   canvas: {fileID: 7668110858049832626, guid: eced0dccccce4f44da3f4db035e4bd58, type: 3}
-  word1: 
-  word2: 
 --- !u!4 &2045186161
 Transform:
   m_ObjectHideFlags: 0
@@ -3863,6 +3859,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7263524541256475325, guid: cd294d88b10439b4d9a36cd1ef4bfb73, type: 3}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7263524542061487667, guid: cd294d88b10439b4d9a36cd1ef4bfb73, type: 3}
       propertyPath: m_Name
       value: Head

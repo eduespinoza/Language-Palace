@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
+using Firebase;
 using Firebase.Firestore;
 using Firebase.Extensions;
 using Firebase.Analytics;
@@ -21,16 +24,65 @@ public class MainMenu : MonoBehaviour
 
     private bool lang1Selected = false;
     
-
+    private FirebaseApp app;
     FirebaseFirestore db;
     int id = 0;
     Player player = new Player(); 
-    public void Start(){
-        db = FirebaseFirestore.DefaultInstance;
-        GetLanguages();
+
+    PlayerMovement gamepad;
+    
+    void Awake()
+    {
+        // checking that firebase connection has been established
+
+        Firebase.FirebaseApp.CheckDependenciesAsync().ContinueWith(checkTask => {
+        Firebase.DependencyStatus status = checkTask.Result;
+        if (status != Firebase.DependencyStatus.Available) {
+            return Firebase.FirebaseApp.FixDependenciesAsync().ContinueWith(t => {
+            return Firebase.FirebaseApp.CheckDependenciesAsync();
+            }).Unwrap();
+        } else {
+            return checkTask;
+        }
+        }).Unwrap().ContinueWith(task => {
+        var dependencyStatus = task.Result;
+        if (dependencyStatus == Firebase.DependencyStatus.Available) {
+            db = Firebase.Firestore.FirebaseFirestore.DefaultInstance;
+            GetLanguages();
+        } else {
+            Debug.LogError(
+            "Could not resolve all Firebase dependencies: " + dependencyStatus);
+        }
+        });
+
+        setPlayerActionsInMenu();      
     }
 
-    public void Update(){}
+    void setPlayerActionsInMenu(){
+        gamepad = new PlayerMovement();
+
+        /*** TO DO HANDLE MOVEMENTE THROUGH THE MENU WITH GAMEPAD ***/
+
+        gamepad.UI.Click.performed += ctx => print("awake");
+        
+        /*** TO DO HANDLE MOVEMENTE THROUGH THE MENU WITH GAMEPAD ***/
+
+    }
+
+    void OnEnable(){
+		gamepad.Enable();
+	}
+
+    void print(string msg){
+        Debug.Log($"Hola fire {msg}");
+    }
+
+    public void Start(){
+        Debug.Log($" fire {Gamepad.all.Count}");
+    }
+
+    public void Update(){
+    }
 
 
     public void UpdatePlayerName(string name){
@@ -60,7 +112,7 @@ public class MainMenu : MonoBehaviour
     }
 
 
-    public async void GetLanguages(){
+    public void GetLanguages(){
         string popularLangList = "";
         string langList = "";
         string[] popularLanguages = { "Catalan", "English", "French", "Galician", "Greek",
@@ -68,7 +120,7 @@ public class MainMenu : MonoBehaviour
         int index = -3;
         // CollectionReference citiesRef = db.Collection("popular");
         Query query = db.Collection("popular").Limit(1);
-        await query.GetSnapshotAsync().ContinueWithOnMainThread((querySnapshotTask) =>
+        query.GetSnapshotAsync().ContinueWithOnMainThread((querySnapshotTask) =>
         {
             foreach (DocumentSnapshot documentSnapshot in querySnapshotTask.Result.Documents)
             {
@@ -88,6 +140,7 @@ public class MainMenu : MonoBehaviour
                     // Debug.Log(String.Format("{0}: {1}", pair.Key, pair.Value));
                     // langList += $"{pair.Key}{Environment.NewLine}";
                     addLanguageToContent(pair.Key);
+                    Debug.Log($" langs : {pair.Key}");
                 }
             }
         });
@@ -103,6 +156,7 @@ public class MainMenu : MonoBehaviour
 
     public void OptionSelected(){
         string aux = (string) EventSystem.current.currentSelectedGameObject.name;
+        // string aux = "jfjf";
         Debug.Log($"Option selected : {aux}");
         if (lang1Selected)
             Player.language2 = aux;

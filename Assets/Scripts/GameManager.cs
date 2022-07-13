@@ -23,6 +23,22 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] items;
 
+    private Dictionary<string, object> objects = new Dictionary<string, object>
+        {
+                { "bust", new Dictionary<string,object>{
+                    {"croatian","bustCroatian"},
+                    {"swedish","bustSwedish"}}},
+                { "fan", new Dictionary<string,object>{
+                    {"croatian","fanCroatian"},
+                    {"swedish","fanSwedish"}}},
+                { "megaphone", new Dictionary<string,object>{
+                    {"croatian","megaphoneCroatian"},
+                    {"swedish","megaphoneSwedish"}}},
+                { "helmet", new Dictionary<string,object>{
+                    {"croatian","helmetCroatian"},
+                    {"swedish","helmetSwedish"}}},
+        };
+
     public static List<Dictionary<string,object>> words = new List<Dictionary<string,object>>();
     public static List<Dictionary<string,object>> wordsToLearn = new List<Dictionary<string,object>>();
     public static List<Dictionary<string,object>> wordsDiscovered = new List<Dictionary<string,object>>();
@@ -31,12 +47,11 @@ public class GameManager : MonoBehaviour
     // private Random random = new Random();
 
     // Start is called before the first frame update
-
-    bool noporfavor = true;
     void Start()
     {
         db = FirebaseFirestore.DefaultInstance;
-        GetWordsFromDb();
+        SetWordsToItemsLocal();
+        // GetWordsFromDb();
     }
 
     // Update is called once per frame
@@ -44,6 +59,16 @@ public class GameManager : MonoBehaviour
     {
     }
 
+    private void SetWordsToItemsLocal(){
+        var index = 0;
+        while(index < items.Length){
+            var word = (Dictionary<string, object>)objects[items[index].name];
+            Debug.Log($"item : {items[index].name}  word you know {word["croatian"]}");
+            items[index].GetComponent<ShowWord>().word = word;
+            wordsToLearn.Add(word);
+            index++;
+        }
+    }
     async void GetWordsFromDb(){
         Query query = db.Collection(Player.topic);
         await query.GetSnapshotAsync().ContinueWithOnMainThread((querySnapshotTask) =>
@@ -90,7 +115,7 @@ public class GameManager : MonoBehaviour
     }
     
     public static void StartPlay(){
-        if(wordsDiscovered.Count == 2){
+        if(wordsDiscovered.Count == 5){
             SceneManager.LoadScene("Test");
         }
     }

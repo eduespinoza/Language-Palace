@@ -30,10 +30,10 @@ public class XRCardboardController : MonoBehaviour
     Vector2 dragDegrees;
     float defaultFov;
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     Vector3 lastMousePos;
     bool vrActive = false;
-#endif
+    #endif
 
     void Awake()
     {
@@ -52,24 +52,24 @@ public class XRCardboardController : MonoBehaviour
 
     void Update()
     {
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Escape))
-#else
+    #else
         if (Api.IsCloseButtonPressed)
-#endif
+    #endif
             DisableVR();
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
         if (vrActive)
             SimulateVR();
         else
             SimulateDrag();
-#else
+    #else
         if (UnityEngine.XR.XRSettings.enabled)
             return;
 
         CheckDrag();
-#endif
+    #endif
 
         attitude = initialRotation * Quaternion.Euler(dragDegrees.x, 0, 0);
         cameraTransform.rotation = Quaternion.Euler(0, -dragDegrees.y, 0) * attitude;
@@ -83,16 +83,16 @@ public class XRCardboardController : MonoBehaviour
 
     public void DisableVR()
     {
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
         vrActive = false;
-#else
+    #else
         var xrManager = XRGeneralSettings.Instance.Manager;
         if (xrManager.isInitializationComplete)
         {
             xrManager.StopSubsystems();
             xrManager.DeinitializeLoader();
         }
-#endif
+    #endif
         SetObjects(false);
         ResetCamera();
         cam.ResetAspect();
@@ -123,7 +123,7 @@ public class XRCardboardController : MonoBehaviour
         dragDegrees.y += touch.deltaPosition.x * dragRate;
     }
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     void SimulateVR()
     {
         var mousePos = Input.mousePosition;
@@ -147,5 +147,5 @@ public class XRCardboardController : MonoBehaviour
         }
         lastMousePos = mousePos;
     }
-#endif
+    #endif
 } 

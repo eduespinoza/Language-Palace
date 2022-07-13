@@ -15,7 +15,7 @@ public class ShowWord : Actionable
         // show the word linked to the object
         if(insCanvas == null){
             float x = transform.position.x;
-            float y = transform.position.y + 3f;
+            float y = transform.position.y + 1f;
             float z = transform.position.z;
             insCanvas = Instantiate(canvas, transform,true);
             insCanvas.GetComponent<DisplayWords>().word1 = (string) word[Player.language1];

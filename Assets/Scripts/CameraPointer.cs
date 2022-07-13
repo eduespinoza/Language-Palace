@@ -34,7 +34,7 @@ public class CameraPointer : MonoBehaviour
         }
     }
 
-    public float maxDistance = 10;
+    public float maxDistance = 6;
     Actionable action = null;
     // private GameObject _gazedAtObject = null;
 
