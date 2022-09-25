@@ -5,28 +5,56 @@ using UnityEngine;
 public class Test {
     public int nWords;
     public int nGoodGuess;
+    public List<Question> wrongAnswers = new List<Question>();
+
+    private List<Dictionary<string, object>> wordsToLearn;
+
+    private List<Dictionary<string,object>> words;
 
     public List<Question> eachQuestion;
 
+    private Database db;
+
+    private GameManager gm;
     public Test(){
-        nWords = GameManager.wordsDiscovered.Count;
+        db = Database.getInstance();
+        gm = GameManager.get();
+        wordsToLearn = gm.wordsToLearn;
+        words = gm.words;
+        nWords = wordsToLearn.Count;
         nGoodGuess = 0;
         SetQuestions();
+        SetDbInfo();
+    }
+
+    private void SetDbInfo(){
+        db.setUserTest(); 
+    }
+
+    private Dictionary<string, object> GetRandomWords(){
+        var random = new System.Random();
+        var number = random.Next(0,words.Count);
+        var word = words[number];
+        return word;
+    }
+    private string GetWordForTest(){
+        var duplicated = false;
+        while (!duplicated){
+            var word =(Dictionary<string,object>) GetRandomWords();
+            if(!wordsToLearn.Contains(word))
+                return (string) word[Player.language2];
+                // duplicated = true;
+        }
+        return "";
     }
 
     private void SetQuestions(){
         eachQuestion = new List<Question>();
-        Debug.Log($"words {GameManager.wordsToLearn }");
-        foreach(Dictionary<string, object> word in GameManager.wordsToLearn){
-            // var toBeGuess = "Holas";
-            // var correctGuess =  "Holas2";
-            // var wrongGuess1 = "Holas333";
-            // var wrongGuess2 = "Holas22";
-            var toBeGuess = (string) word[Player.language2];
-            var correctGuess = (string) word[Player.language1]; 
-            var wrongGuess1 = GameManager.GetWordForTest();
-            var wrongGuess2 = GameManager.GetWordForTest();
-            // cuanta suerte tiene que haber para que wguess1==wguess2 ???
+        foreach(Dictionary<string, object> word in wordsToLearn){
+            var toBeGuess = (string) word[Player.language1];
+            var correctGuess = (string) word[Player.language2];
+            var wrongGuess1 = GetWordForTest();
+            var wrongGuess2 = GetWordForTest();
             var question = new Question(toBeGuess,correctGuess,wrongGuess1,wrongGuess2);
             eachQuestion.Add(question);
         }

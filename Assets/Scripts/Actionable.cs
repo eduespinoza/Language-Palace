@@ -10,7 +10,7 @@ public abstract class Actionable : MonoBehaviour
 
     protected float t1 = 0, t2 = 0;
 
-    protected float duration = 2.2f;
+    protected float duration = 2.0f;
 
     protected bool looking = false;
 
@@ -29,7 +29,7 @@ public abstract class Actionable : MonoBehaviour
     public void PointerEnter(){
         insActionController = (GameObject) Instantiate(actionAnimation,transform.position,transform.rotation);
         insActionController.transform.LookAt(CameraPointer.Instance.transform);
-        insActionController.transform.position = new Vector3(insActionController.transform.position.x, insActionController.transform.position.y + 1.3f, insActionController.transform.position.z);
+        insActionController.transform.position = new Vector3(insActionController.transform.position.x, insActionController.transform.position.y + 1.4f, insActionController.transform.position.z);
         looking = true;
     }
 

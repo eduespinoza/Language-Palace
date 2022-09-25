@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class ShowWord : Actionable
@@ -10,13 +11,21 @@ public class ShowWord : Actionable
 
     public Dictionary<string, object> word;
 
+    private float x,y,z;
+
+    private Level level;
+
+    void Awake(){
+        level = gameObject.GetComponentInParent<Level>();
+        Debug.Log($"level {level == null}");
+    }
 
     public override void PointerDown() {
         // show the word linked to the object
         if(insCanvas == null){
-            float x = transform.position.x;
-            float y = transform.position.y + 1f;
-            float z = transform.position.z;
+            x = transform.position.x;
+            y = transform.position.y + 1.7f;
+            z = transform.position.z;
             insCanvas = Instantiate(canvas, transform,true);
             insCanvas.GetComponent<DisplayWords>().word1 = (string) word[Player.language1];
             insCanvas.GetComponent<DisplayWords>().word2 = (string) word[Player.language2];
@@ -28,8 +37,17 @@ public class ShowWord : Actionable
     }
 
     private void SendWordDiscovered(){
-        GameManager.wordsDiscovered.Add(word);
-        GameManager.StartPlay();
+        // send info about the object name, object position, timestamp, word
+
+        Dictionary<string, object> wordDiscovered = new Dictionary<string, object>
+        {
+                { "time", DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") },
+                { "name", gameObject.name },
+                { "position",  $"x:[{x}]-y:[{y}]-z:[{z}]"},
+                { "word", word}
+        };        
+        level.wordsDiscovered.Add(wordDiscovered);
+        level.updateObjectDiscovered();
     }
 
 }

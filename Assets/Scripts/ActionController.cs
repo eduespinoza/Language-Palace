@@ -10,7 +10,7 @@ public class ActionController : MonoBehaviour
     [SerializeField] UnityEvent OnPointerUp;
 
     [SerializeField] Gradient gradient;
-    [SerializeField] float duration = 2.5f;
+    [SerializeField] float duration = 2.0f;
 
     ParticleSystem ps;
     ParticleSystem.MainModule main;

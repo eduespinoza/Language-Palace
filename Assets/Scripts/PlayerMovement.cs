@@ -71,6 +71,42 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""4d0c52a7-6991-4c3a-a256-9cdf52e8689a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""StartTest"",
+                    ""type"": ""Button"",
+                    ""id"": ""389f6d15-af30-46e2-9380-b24097dd25b3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SlideLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""be088549-06db-4126-ac30-f94808088d35"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SlideRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""a51d0884-d947-4615-ab05-c6f1a70cb664"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -142,6 +178,39 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""1D Axis"",
+                    ""id"": ""878cd030-c47d-429e-8c7a-6ac9a5834acc"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StrafeRight"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""93588a5d-2672-4f6b-9d75-9fa274751aa3"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StrafeRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""c0959849-9620-40aa-a8bc-bac2b1033a13"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StrafeRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
                     ""id"": ""7da0c900-f92d-4d63-966a-c43fa8fe3771"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
@@ -172,6 +241,127 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
                     ""action"": ""StrafeForward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""ee8072ec-2826-46d9-9583-b3eee823abea"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StrafeForward"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1d7a4bcd-5580-4fa5-bf6d-40bde5813474"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StrafeForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""4fc70b52-d288-44cf-84b3-3ba612d3ba55"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StrafeForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3be44391-c9a5-4223-a542-7770f094f91a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""727d1b51-b596-40f8-9038-251700b48471"",
+                    ""path"": ""<DualShockGamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f092f359-a4cc-4a93-b203-c84ecf59bef1"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartTest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""712af2dc-e919-4607-b7c5-644047ad8044"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartTest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14fa32b2-b3dd-4a5d-a81f-ce63de4a52c5"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlideLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9616042f-3afd-40d0-9a9e-abb9e4aad6f5"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlideLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e7faba7-e1bc-4581-907e-833290d3cb79"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlideRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54e78b10-5597-401c-b595-17cf6b414c2d"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlideRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -732,6 +922,10 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
         m_Gameplay_Cancel = m_Gameplay.FindAction("Cancel", throwIfNotFound: true);
         m_Gameplay_StrafeRight = m_Gameplay.FindAction("StrafeRight", throwIfNotFound: true);
         m_Gameplay_StrafeForward = m_Gameplay.FindAction("StrafeForward", throwIfNotFound: true);
+        m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
+        m_Gameplay_StartTest = m_Gameplay.FindAction("StartTest", throwIfNotFound: true);
+        m_Gameplay_SlideLeft = m_Gameplay.FindAction("SlideLeft", throwIfNotFound: true);
+        m_Gameplay_SlideRight = m_Gameplay.FindAction("SlideRight", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -809,6 +1003,10 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Cancel;
     private readonly InputAction m_Gameplay_StrafeRight;
     private readonly InputAction m_Gameplay_StrafeForward;
+    private readonly InputAction m_Gameplay_Pause;
+    private readonly InputAction m_Gameplay_StartTest;
+    private readonly InputAction m_Gameplay_SlideLeft;
+    private readonly InputAction m_Gameplay_SlideRight;
     public struct GameplayActions
     {
         private @PlayerMovement m_Wrapper;
@@ -818,6 +1016,10 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
         public InputAction @Cancel => m_Wrapper.m_Gameplay_Cancel;
         public InputAction @StrafeRight => m_Wrapper.m_Gameplay_StrafeRight;
         public InputAction @StrafeForward => m_Wrapper.m_Gameplay_StrafeForward;
+        public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
+        public InputAction @StartTest => m_Wrapper.m_Gameplay_StartTest;
+        public InputAction @SlideLeft => m_Wrapper.m_Gameplay_SlideLeft;
+        public InputAction @SlideRight => m_Wrapper.m_Gameplay_SlideRight;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -842,6 +1044,18 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
                 @StrafeForward.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStrafeForward;
                 @StrafeForward.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStrafeForward;
                 @StrafeForward.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStrafeForward;
+                @Pause.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @StartTest.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartTest;
+                @StartTest.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartTest;
+                @StartTest.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartTest;
+                @SlideLeft.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlideLeft;
+                @SlideLeft.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlideLeft;
+                @SlideLeft.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlideLeft;
+                @SlideRight.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlideRight;
+                @SlideRight.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlideRight;
+                @SlideRight.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlideRight;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -861,6 +1075,18 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
                 @StrafeForward.started += instance.OnStrafeForward;
                 @StrafeForward.performed += instance.OnStrafeForward;
                 @StrafeForward.canceled += instance.OnStrafeForward;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+                @StartTest.started += instance.OnStartTest;
+                @StartTest.performed += instance.OnStartTest;
+                @StartTest.canceled += instance.OnStartTest;
+                @SlideLeft.started += instance.OnSlideLeft;
+                @SlideLeft.performed += instance.OnSlideLeft;
+                @SlideLeft.canceled += instance.OnSlideLeft;
+                @SlideRight.started += instance.OnSlideRight;
+                @SlideRight.performed += instance.OnSlideRight;
+                @SlideRight.canceled += instance.OnSlideRight;
             }
         }
     }
@@ -985,6 +1211,10 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
         void OnCancel(InputAction.CallbackContext context);
         void OnStrafeRight(InputAction.CallbackContext context);
         void OnStrafeForward(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+        void OnStartTest(InputAction.CallbackContext context);
+        void OnSlideLeft(InputAction.CallbackContext context);
+        void OnSlideRight(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

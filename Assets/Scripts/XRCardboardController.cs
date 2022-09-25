@@ -13,13 +13,7 @@ public class XRCardboardController : MonoBehaviour
     [SerializeField]
     Transform cameraTransform = default;
     [SerializeField]
-    GameObject vrGroup = default;
-    [SerializeField]
-    GameObject standardGroup = default;
-    [SerializeField]
     XRCardboardInputModule vrInputModule = default;
-    [SerializeField]
-    StandaloneInputModule standardInputModule = default;
     [SerializeField, Range(.05f, 2)]
     float dragRate = .2f;
 
@@ -52,12 +46,12 @@ public class XRCardboardController : MonoBehaviour
 
     void Update()
     {
-    #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Escape))
-    #else
-        if (Api.IsCloseButtonPressed)
-    #endif
-            DisableVR();
+    // #if UNITY_EDITOR
+    //     if (Input.GetKeyDown(KeyCode.Escape))
+    // #else
+    //     if (Api.IsCloseButtonPressed)
+    // #endif
+    //         DisableVR();
 
     #if UNITY_EDITOR
         if (vrActive)
@@ -108,9 +102,8 @@ public class XRCardboardController : MonoBehaviour
         // standardGroup.SetActive(!vrActive);
         // vrGroup.SetActive(vrActive);
         // standardInputModule.enabled = !vrActive;
-        vrInputModule.enabled = vrActive;
+        //vrInputModule.enabled = vrActive;
         poseDriver.enabled = vrActive;
-        Debug.LogError("hago");
     }
 
     void CheckDrag()
